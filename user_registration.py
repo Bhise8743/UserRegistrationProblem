@@ -16,10 +16,11 @@ import re
 
 class UserRegistration:
 
-    def __init__(self, f_name, l_name, email):
+    def __init__(self, f_name, l_name, email, m_num):
         self.f_name = f_name
         self.l_name = l_name
         self.email = email
+        self.m_num = m_num
 
     def check_first_name(self):
         pattern = re.compile(r'^[A-Z][A-Za-z]{2,}$')
@@ -41,13 +42,20 @@ class UserRegistration:
             return True
         return False
 
+    def check_mobile_num(self):
+        pattern = re.compile(r'\d\d [6-9]\d{9}')
+        if pattern.match(self.m_num):
+            return True
+        return False
+
 
 if __name__ == '__main__':
     first_name = input("Enter the first name ")
     last_name = input("Enter the last name ")
     email = input("Enter the email ")
+    m_num = input("Enter the Mobile number ")
 
-    user = UserRegistration(first_name, last_name, email)
+    user = UserRegistration(first_name, last_name, email, m_num)
 
     if user.check_first_name():
         print("First name is valid ")
@@ -64,3 +72,7 @@ if __name__ == '__main__':
     else:
         print("Email is Not valid")
 
+    if user.check_mobile_num():
+        print("Mobile number is valid ")
+    else:
+        print("Mobile number is Not valid ")
