@@ -16,11 +16,12 @@ import re
 
 class UserRegistration:
 
-    def __init__(self, f_name, l_name, email, m_num):
+    def __init__(self, f_name, l_name, email, m_num, password):
         self.f_name = f_name
         self.l_name = l_name
         self.email = email
         self.m_num = m_num
+        self.password = password
 
     def check_first_name(self):
         pattern = re.compile(r'^[A-Z][A-Za-z]{2,}$')
@@ -48,14 +49,28 @@ class UserRegistration:
             return True
         return False
 
+    def check_password(self):
+        """
+        Description: This function validate password.
+
+        Parameter: self object as parameter.
+
+        Return: boolean value
+        """
+        pattern = re.compile(r'\D{8}')  # \D  - Not a Digit (0-9)
+        if pattern.match(self.password):
+            return True
+        return False
+
 
 if __name__ == '__main__':
     first_name = input("Enter the first name ")
     last_name = input("Enter the last name ")
     email = input("Enter the email ")
     m_num = input("Enter the Mobile number ")
+    password = input("Enter the password ")
 
-    user = UserRegistration(first_name, last_name, email, m_num)
+    user = UserRegistration(first_name, last_name, email, m_num, password)
 
     if user.check_first_name():
         print("First name is valid ")
@@ -76,3 +91,8 @@ if __name__ == '__main__':
         print("Mobile number is valid ")
     else:
         print("Mobile number is Not valid ")
+
+    if user.check_password():
+        print("Password is valid ")
+    else:
+        print("Password is Not valid ")
