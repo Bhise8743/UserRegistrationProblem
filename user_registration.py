@@ -24,18 +24,42 @@ class UserRegistration:
         self.password = password
 
     def check_first_name(self):
+        """
+        Description: This function validate first name.
+
+        Parameter: self object as parameter.
+
+        Return: boolean value
+
+        """
         pattern = re.compile(r'^[A-Z][A-Za-z]{2,}$')
         if pattern.match(self.f_name):
             return True
         return False
 
     def check_last_name(self):  # ^ string start with
+        """
+        Description: This function validate last name.
+
+        Parameter: self object as parameter.
+
+        Return: boolean value
+
+        """
         pattern = re.compile(r'^[A-Z][A-Za-z]{2,}$')  # $ end of the string
         if pattern.match(self.l_name):
             return True
         return False
 
     def check_email(self):
+        """
+        Description: This function validate email.
+
+        Parameter: self object as parameter.
+
+        Return: boolean value
+
+        """
         pattern = re.compile(r'^[a-z]+\.?[a-z0-9]*?@[a-z]+\.[a-z0-9]+\.?[a-z]+?$')
         #                       abc     .xyz        @   bl  .co     .in
 
@@ -44,6 +68,14 @@ class UserRegistration:
         return False
 
     def check_mobile_num(self):
+        """
+        Description: This function validate mobile number.
+
+        Parameter: self object as parameter.
+
+        Return: boolean value
+
+        """
         pattern = re.compile(r'\d\d [6-9]\d{9}')
         if pattern.match(self.m_num):
             return True
@@ -56,8 +88,10 @@ class UserRegistration:
         Parameter: self object as parameter.
 
         Return: boolean value
+
         """
-        pattern = re.compile(r'\D{8}')  # \D  - Not a Digit (0-9)
+        # pattern = re.compile(r'\D{8,}')  # \D  - Not a Digit (0-9)
+        pattern = re.compile(r'(?=.*[A-Z])\D{8,}')   # .* it check the in all character of the password
         if pattern.match(self.password):
             return True
         return False
