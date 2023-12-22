@@ -12,7 +12,8 @@
 
 """
 import re
-
+import logging
+logging.basicConfig(filename='user_reg_log.log',filemode='w')
 
 class UserRegistration:
 
@@ -60,7 +61,7 @@ class UserRegistration:
         Return: boolean value
 
         """
-        pattern = re.compile(r'^[a-z]+\.?[a-z0-9]*?@[a-z]+\.[a-z0-9]+\.?[a-z]+?$')
+        pattern = re.compile(r'^[a-z]+(\.?[a-z0-9+-]+)?@[A-Za-z0-9]+\.[A-Za-z]*[.]?[A-Za-z]+$')
         #                       abc     .xyz        @   bl  .co     .in
 
         if pattern.match(self.email):
