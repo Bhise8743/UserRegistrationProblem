@@ -4,12 +4,12 @@ from user_registration import UserRegistration
 
 @pytest.fixture
 def user_obj_t():
-    return UserRegistration("Omkar", "Bhise", "omkarbhise8745@gmail.com", "91 6235236988", "Bhise@123")
+    return UserRegistration("Omkar", "Bhise", "abc.2@gmail.com", "91 6235236988", "Bhise@123")
 
 
 @pytest.fixture
 def user_obj_f():
-    return UserRegistration("omkar", "nj", "adadfa@adf", "91 5623412323", "bhise@123")
+    return UserRegistration("omkar", "nj", "adadfa.@adf", "91 5623412323", "bhise@123")
 
 
 def test_first_name_success(user_obj_t, user_obj_f):
