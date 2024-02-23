@@ -91,9 +91,7 @@ class UserRegistration:
         Return: boolean value
 
         """
-        # pattern = re.compile(r'\D{8,}')  # \D  - Not a Digit (0-9)
-        # pattern = re.compile(r'(?=.*[A-Z]){8,}')   # .* it check the in all character of the password
-        # pattern = re.compile(r'(?=.*[A-Z])(?=.*[0-9]){8,}')
+
         pattern = re.compile(r'(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*+/-]){8,}')
         if pattern.match(self.password):
             return True
